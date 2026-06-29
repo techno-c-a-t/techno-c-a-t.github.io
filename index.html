@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <!-- Базовое SEO -->
+    <title>Nikitos | Applied Math & Computer Science</title>
+    <meta name="description" content="Personal portfolio of Nikitos. Applied Math & CS student, specializing in C++, IoT, OS customization, and 3D printing.">
+    <meta name="keywords" content="Nikitos, technocat, C++, Python, Linux, ESP8266, STM32, 3D printing, Applied Mathematics and Computer Science">
+    <meta name="author" content="Nikitos">
+    <link rel="canonical" href="https://technocat.cc/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Nikitos | Applied Math & Computer Science">
+    <meta property="og:description" content="Software development, IoT, 3D prototyping, and Linux/Android customization.">
+    <meta property="og:image" content="https://technocat.cc/avatar.png">
+    <meta property="og:type" content="profile">
+    <meta property="og:url" content="https://technocat.cc/">
+
+    <!-- Иконки FontAwesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- GEO / ИИ Оптимизация: JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      "mainEntity": {
+        "@type": "Person",
+        "name": "Nikitos",
+        "alternateName": "technocat",
+        "jobTitle": "Applied Mathematics & Computer Science Student",
+        "image": "https://technocat.cc/avatar.png",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Minsk",
+          "addressCountry": "Belarus"
+        },
+        "knowsAbout": [
+          "C++",
+          "Python",
+          "Web",
+          "Linux System Administration",
+          "Embedded Systems",
+          "ESP8266",
+          "STM32",
+          "3D Printing",
+          "Android Customization"
+        ],
+        "sameAs": [
+          "https://github.com/techno-c-a-t",
+          "https://t.me/techno_c_a_t"
+        ]
+      }
+    }
+    </script>
+</head>
+<body data-lang="en" data-mode="short" data-theme="dark">
+
+    <!-- Telegram-style липкая шапка для мобильных -->
+    <header class="mobile-sticky-header">
+        <div class="m-header-left">
+            <a href="mailto:admin@technocat.cc" class="m-avatar-link" title="Написать на почту / Send an email">
+                <img src="avatar.png" alt="Nikitos" class="m-avatar">
+            </a>
+            <span class="m-name">Nikitos</span>
+        </div>
+        <div class="m-header-center">
+            <div class="m-socials">
+                <a href="https://t.me/techno_c_a_t" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram"></i></a>
+                <a href="https://github.com/techno-c-a-t" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+        <div class="m-header-right">
+            <!-- Выпадающий список Языка -->
+            <div class="m-dropdown" id="dropdown-lang-container">
+                <button class="m-dropbtn" onclick="toggleDropdown(event, 'lang')">
+                    <span class="active-lang">EN</span> <i class="fas fa-caret-down"></i>
+                </button>
+                <div class="m-dropdown-content" id="m-dropdown-lang">
+                    <button onclick="changeLanguage('en')">EN</button>
+                    <button onclick="changeLanguage('be')">BE</button>
+                    <button onclick="changeLanguage('ru')">RU</button>
+                </div>
+            </div>
+            <!-- Выпадающий список Режима -->
+            <div class="m-dropdown" id="dropdown-mode-container">
+                <button class="m-dropbtn" onclick="toggleDropdown(event, 'mode')">
+                    <span class="active-mode">SHORT</span> <i class="fas fa-caret-down"></i>
+                </button>
+                <div class="m-dropdown-content" id="m-dropdown-mode">
+                    <button onclick="changeMode('short')">SHORT</button>
+                    <button onclick="changeMode('full')">FULL</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex-container">
+        <!-- Левая колонка (Профиль) -->
+        <aside class="sidebar">
+            <div class="profile-card">
+                <div class="m-row-wrapper">
+                    <!-- Аватар-ссылка на почту -->
+                    <a href="mailto:admin@technocat.cc" class="avatar-click-wrapper" title="Написать на почту / Send an email">
+                        <div class="avatar-container">
+                            <img src="avatar.png" alt="Nikitos" class="avatar">
+                        </div>
+                    </a>
+                    <div class="m-text-container">
+                        <h1>Nikitos</h1>
+                        <p class="subtitle lang-en">Applied Math & CS Student</p>
+                        <p class="subtitle lang-be">Студэнт ПМI</p>
+                        <p class="subtitle lang-ru">Студент ПМИ</p>
+                        
+                        <p class="location"><i class="fas fa-map-marker-alt"></i> Minsk, Belarus</p>
+                        
+                        <div class="social-links">
+                            <a href="https://t.me/techno_c_a_t" target="_blank" rel="noopener noreferrer" title="Telegram"><i class="fab fa-telegram"></i></a>
+                            <a href="https://github.com/techno-c-a-t" target="_blank" rel="noopener noreferrer" title="GitHub"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Блок управления -->
+                <div class="controls-container">
+                    <div class="toggle-group">
+                        <button id="btn-lang-en" class="toggle-btn" onclick="changeLanguage('en')">EN</button>
+                        <button id="btn-lang-be" class="toggle-btn" onclick="changeLanguage('be')">BE</button>
+                        <button id="btn-lang-ru" class="toggle-btn" onclick="changeLanguage('ru')">RU</button>
+                    </div>
+                    <div class="toggle-group">
+                        <button id="btn-mode-short" class="toggle-btn" onclick="changeMode('short')">SHORT</button>
+                        <button id="btn-mode-full" class="toggle-btn" onclick="changeMode('full')">FULL</button>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Правая колонка -->
+        <main class="content">
+            
+            <!-- КРАТКИЙ РЕЖИМ -->
+            <div class="mode-short">
+                <section class="section compact-hero">
+                    <p class="hero-text lang-en">
+                        Nikitos. Applied Math & CS student from Minsk. Software development, custom hardware systems, and OS tweaking. Also crafting DIY tools and enhancing devices using C++, Python.
+                    </p>
+                    <p class="hero-text lang-be">
+                        Nikitos. Захапляюся праграмным забеспячэннем, апаратнымі сістэмамі і кастамізацыяй АС. Ствараю розныя самаробкі на C++, Python і мікракантролерах.
+                    </p>
+                    <p class="hero-text lang-ru">
+                        Nikitos, 2 курс ПМИ, Минск. Интересуюсь ПО, аппаратными системами и кастомизацией ОС. Создаю самоделки на C++, Python. Люблю сферу DIY.
+                    </p>
+                </section>
+            </div>
+
+            <!-- ПОЛНЫЙ РЕЖИМ -->
+            <div class="mode-full">
+                <!-- О себе -->
+                <section class="section" id="about">
+                    <h2 class="lang-en">About Me</h2>
+                    <h2 class="lang-be">Пра сябе</h2>
+                    <h2 class="lang-ru">О себе</h2>
+                    
+                    <p class="lang-en">I am currently in my 2nd year studying Applied Mathematics and Computer Science. I am highly interested in the intersection of software and hardware. I've been programming microcontrollers since school. I love analyzing how complex systems work from the inside, customizing environments, and creating physical DIY projects with software support.</p>
+                    <p class="lang-be">Вучуся на 2-м курсе прыкладной матэматыкі і інфарматыкі. Мае інтарэсы знаходзяцца на стыку праграмнага забеспячэння і апаратнай часткі. Са школы праграмую мікракантролеры. Люблю разбірацца ў тым, як уладкаваны складаныя сістэмы знутры, кастамізаваць асяроддзе і ствараць розныя самаробкі сваімі рукамі.</p>
+                    <p class="lang-ru">Учусь на 2-м курсе прикладной математики и информатики. Интересуюсь пересечением программного обеспечения и аппаратной части. Со школы работаю с микроконтроллерами. Люблю разбираться в том, как устроены сложные системы изнутри, кастомизировать окружение и создавать разные самоделки своими руками.</p>
+                </section>
+
+                <!-- Сферы интересов -->
+                <section class="section" id="competencies">
+                    <h2 class="lang-en">Areas of Interest</h2>
+                    <h2 class="lang-be">Сферы інтарэсаў</h2>
+                    <h2 class="lang-ru">Сферы интересов</h2>
+                    
+                    <p class="lang-en">Fields and hobbies I actively explore:</p>
+                    <p class="lang-be">Напрамкі працы і хобі, у якія я пагружаюся:</p>
+                    <p class="lang-ru">Направления работы и хобби, в которые я погружаюсь:</p>
+                    
+                    <ul class="competence-list">
+                        <li>
+                            <i class="fas fa-chevron-right list-accent"></i> 
+                            <div class="lang-en"><strong>Embedded & IoT:</strong> Developing basic C++ projects for STM32 microcontrollers and ESP8266 boards.</div>
+                            <div class="lang-be"><strong>Embedded & IoT:</strong> Распрацоўка праектаў на C++ для мікракантролераў STM32 і плат сямейства ESP8266 на базавым узроўні.</div>
+                            <div class="lang-ru"><strong>Embedded & IoT:</strong> Разработка проектов на C++ для микроконтроллеров STM32 и плат семейства ESP8266 на базовом уровне.</div>
+                        </li>
+                        <li>
+                            <i class="fas fa-chevron-right list-accent"></i> 
+                            <div class="lang-en"><strong>OS Tinkering & SysAdmin:</strong> Customizing Linux/Windows configurations, routing network interfaces, kernel optimization, and resolving driver/dual-GPU hardware conflicts.</div>
+                            <div class="lang-be"><strong>OS Tinkering & SysAdmin:</strong> Сістэмная настройка Linux/Windows, адладка сеткавых інтэрфейсаў, аптымізацыя ядра, ліквідацыя канфліктаў абсталявання (драйвераў, dual-GPU).</div>
+                            <div class="lang-ru"><strong>OS Tinkering & SysAdmin:</strong> Системная настройка Linux/Windows, отладка сетевых интерфейсов, оптимизация ядра, устранение конфликтов оборудования (драйверов, dual-GPU) и сборка кастомных инструментов.</div>
+                        </li>
+                        <li>
+                            <i class="fas fa-chevron-right list-accent"></i> 
+                            <div class="lang-en"><strong>Mobile Tweak:</strong> Tuning Android systems, gaining root access, working with Termux shell, and developing quick mini-tools.</div>
+                            <div class="lang-be"><strong>Mobile Tweak:</strong> Даследаванне мабільных АС (Android) і магчымасцей Root-правоў, праца з кансольным асяроддзем Termux, зборка невялічкіх утыліт.</div>
+                            <div class="lang-ru"><strong>Mobile Tweak:</strong> Исследование мобильных ОС (Android) и возможностей Root-прав, работа с консольной средой Termux, сборка небольших утилит.</div>
+                        </li>
+                        <li>
+                            <i class="fas fa-chevron-right list-accent"></i> 
+                            <div class="lang-en"><strong>DIY Crafting & 3D Printing:</strong> 3D printing with personal FDM printers (enclosed & open types), modeling, and manual crafting with wood and plastics.</div>
+                            <div class="lang-be"><strong>DIY Crafting & 3D Printing:</strong> Прататыпаванне і 3D-пячаць на ўласных FDM-прынтарах (закрыты і адкрыты тып), мадэляванне, ручная праца з дрэвам і пластыкам.</div>
+                            <div class="lang-ru"><strong>DIY Crafting & 3D Printing:</strong> Прототипирование и 3D-печать на собственных FDM-принтерах (закрытый и открытый тип), моделирование, ручная работа с деревом/пластиком.</div>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- Навыки -->
+                <section class="section" id="skills">
+                    <h2 class="lang-en">Skills & Tools</h2>
+                    <h2 class="lang-be">Навыкі і інструменты</h2>
+                    <h2 class="lang-ru">Навыки и инструменты</h2>
+                    <div class="skills-grid">
+                        <span class="skill-tag">C++ (Core)</span>
+                        <span class="skill-tag">Python (AI-assisted)</span>
+                        <span class="skill-tag">JS / React (AI-assisted)</span>
+                        <span class="skill-tag">Linux / Bash (AI-assisted)</span>
+                        <span class="skill-tag">STM32 / ESP8266</span>
+                        <span class="skill-tag">Termux / Android Tweak</span>
+                        <span class="skill-tag">3D Printing (FDM)</span>
+                    </div>
+                </section>
+
+                <!-- Опыт по направлениям -->
+                <section class="section" id="experience">
+                    <h2 class="lang-en">Expertise & Background</h2>
+                    <h2 class="lang-be">Вопыт па кірунках</h2>
+                    <h2 class="lang-ru">Опыт по направлениям</h2>
+                    <div class="experience-list">
+                        <div class="exp-row">
+                            <span class="exp-title lang-en">Programming</span>
+                            <span class="exp-title lang-be">Праграмаванне</span>
+                            <span class="exp-title lang-ru">Программирование</span>
+                            <span class="exp-desc">C++, Python, JS, React, Bash</span>
+                        </div>
+                        <div class="exp-row">
+                            <span class="exp-title lang-en">System Admin</span>
+                            <span class="exp-title lang-be">Адміністраванне</span>
+                            <span class="exp-title lang-ru">Администрирование</span>
+                            <span class="exp-desc lang-en">Linux (Ubuntu) administration, Android rooting, USB protocols, and MCU flashing.</span>
+                            <span class="exp-desc lang-be">Адміністраванне Linux (Ubuntu), рутаванне Android, праца з USB-пратаколамі, прашыўка мікракантролераў.</span>
+                            <span class="exp-desc lang-ru">Администрирование Linux (Ubuntu), рутирование Android, работа с USB-протоколами, прошивка микроконтроллеров.</span>
+                        </div>
+                        <div class="exp-row">
+                            <span class="exp-title lang-en">3D Modeling</span>
+                            <span class="exp-title lang-be">3D-мадэляванне</span>
+                            <span class="exp-title lang-ru">3D-моделирование</span>
+                            <span class="exp-desc lang-en">KOMPAS-3D, Solidworks (learning), Ultimaker Cura, PrusaSlicer.</span>
+                            <span class="exp-desc lang-be">КОМПАС-3Д, Solidworks (у працэсе асваення), Ultimaker Cura, PrusaSlicer.</span>
+                            <span class="exp-desc lang-ru">КОМПАС-3Д, Solidworks (в процессе освоения), Ultimaker Cura, PrusaSlicer.</span>
+                        </div>
+                        <div class="exp-row">
+                            <span class="exp-title lang-en">Physics</span>
+                            <span class="exp-title lang-be">Фізіка</span>
+                            <span class="exp-title lang-ru">Физика</span>
+                            <span class="exp-desc lang-en">2 years of professional curriculum training.</span>
+                            <span class="exp-desc lang-be">2 гады прафесійнага навучання.</span>
+                            <span class="exp-desc lang-ru">2 года профессионального обучения.</span>
+                        </div>
+                        <div class="exp-row">
+                            <span class="exp-title lang-en">Mathematics</span>
+                            <span class="exp-title lang-be">Матэматыка</span>
+                            <span class="exp-title lang-ru">Математика</span>
+                            <span class="exp-desc lang-en">University (currently studying).</span>
+                            <span class="exp-desc lang-be">Універсітэт (у працэсе навучання).</span>
+                            <span class="exp-desc lang-ru">Университет (в процессе обучения).</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Проекты -->
+                <section class="section" id="projects">
+                    <h2 class="lang-en">Projects & Experiments</h2>
+                    <h2 class="lang-be">Праекты і эксперыменты</h2>
+                    <h2 class="lang-ru">Проекты и эксперименты</h2>
+                    <div class="projects-list">
+                        <div class="project-item">
+                            <span class="project-link">
+                                Wi-Fi Flower Lamp <i class="fas fa-seedling project-icon"></i>
+                            </span>
+                            <p class="project-desc lang-en">Custom decorative flower lamp built on the ESP8266 module with remote Web UI control over Wi-Fi.</p>
+                            <p class="project-desc lang-be">Кастомны дэкаратыўны свяцільнік на базе модуля ESP8266 з дыстанцыйным вэб-кіраваннем па Wi-Fi.</p>
+                            <p class="project-desc lang-ru">Кастомный декоративный светильник на базе модуля ESP8266 с удаленным веб-управлением по Wi-Fi.</p>
+                        </div>
+                        <div class="project-item">
+                            <span class="project-link">
+                                Bicycle Bluetooth Light <i class="fas fa-bicycle project-icon"></i>
+                            </span>
+                            <p class="project-desc lang-en">Custom bicycle backlighting system controlled from a smartphone via Bluetooth.</p>
+                            <p class="project-desc lang-be">Індывідуальная сістэма падсвятлення для ровара, якая кіруецца са смартфона па Bluetooth.</p>
+                            <p class="project-desc lang-ru">Индивидуальная система подсветки для велосипеда, управляемая со смартфона по Bluetooth.</p>
+                        </div>
+                        <div class="project-item">
+                            <span class="project-link">
+                                NSLDRPG <i class="fas fa-gamepad project-icon"></i> 
+                                <span class="badge lang-en">WIP</span>
+                                <span class="badge lang-be">У распрацоўцы</span>
+                                <span class="badge lang-ru">В разработке</span>
+                            </span>
+                            <p class="project-desc lang-en">A text-based or mechanics-heavy Role Play game dedicated to a Telegram community.</p>
+                            <p class="project-desc lang-be">Ролевая гульня, прысвечаная Telegram-супольнасці. Знаходзіцца ў распрацоўцы.</p>
+                            <p class="project-desc lang-ru">Ролевая игра, посвященная Telegram-сообществу. В разработке.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Контакты -->
+            <section class="section" id="contact">
+                <h2 class="lang-en">Contacts</h2>
+                <h2 class="lang-be">Кантакты</h2>
+                <h2 class="lang-ru">Контакты</h2>
+                <div class="contact-info">
+                    <p class="lang-en">Feel free to contact me for any technical discussions, experiments, or collaborative work:</p>
+                    <p class="lang-be">Адкрыты для цікавых дыскусій, тэхнічных эксперыментаў і сумесных праектаў:</p>
+                    <p class="lang-ru">Открыт для интересных обсуждений, технических эксперментов и совместных проектов:</p>
+                    
+                    <a href="https://t.me/techno_c_a_t" target="_blank" rel="noopener noreferrer" class="contact-link"><i class="fab fa-telegram"></i> @techno_c_a_t</a>
+                    <a href="mailto:admin@technocat.cc" class="contact-link"><i class="fas fa-envelope"></i> admin@technocat.cc</a>
+                </div>
+            </section>
+
+            <!-- Подвал со сменой темы оформления -->
+            <footer class="footer">
+                <button id="btn-theme-toggle" class="theme-toggle-btn" onclick="toggleTheme()">
+                    <span class="theme-text-light">
+                        <span class="lang-en">Switch to Light Theme</span>
+                        <span class="lang-be">Пераключыць на светлую тэму</span>
+                        <span class="lang-ru">Переключить на светлую тему</span>
+                    </span>
+                    <span class="theme-text-dark">
+                        <span class="lang-en">Switch to Dark Theme</span>
+                        <span class="lang-be">Пераключыць на цёмную тэму</span>
+                        <span class="lang-ru">Переключить на темную тему</span>
+                    </span>
+                </button>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Скрипт Локализации и Переключения режимов -->
+    <script>
+        function setLanguage(lang) {
+            document.body.setAttribute('data-lang', lang);
+            document.querySelectorAll('#btn-lang-en, #btn-lang-be, #btn-lang-ru').forEach(btn => btn.classList.remove('active'));
+            
+            const btn = document.getElementById('btn-lang-' + lang);
+            if (btn) btn.classList.add('active');
+            
+            const mLabel = document.querySelector('.active-lang');
+            if (mLabel) mLabel.textContent = lang.toUpperCase();
+            
+            localStorage.setItem('preferred-lang', lang);
+        }
+
+        function setMode(mode) {
+            document.body.setAttribute('data-mode', mode);
+            document.querySelectorAll('#btn-mode-short, #btn-mode-full').forEach(btn => btn.classList.remove('active'));
+            
+            const btn = document.getElementById('btn-mode-' + mode);
+            if (btn) btn.classList.add('active');
+            
+            const mLabel = document.querySelector('.active-mode');
+            if (mLabel) mLabel.textContent = mode.toUpperCase();
+            
+            localStorage.setItem('preferred-mode', mode);
+        }
+
+        // Обертка для анимации перехода
+        function changeLanguage(lang) {
+            document.body.classList.add('switching');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            setTimeout(() => {
+                setLanguage(lang);
+                setTimeout(() => {
+                    document.body.classList.remove('switching');
+                }, 80);
+            }, 250);
+        }
+
+        function changeMode(mode) {
+            document.body.classList.add('switching');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            setTimeout(() => {
+                setMode(mode);
+                setTimeout(() => {
+                    document.body.classList.remove('switching');
+                }, 80);
+            }, 250);
+        }
+
+        // Переключение Темы (с эффектом размытия Switching)
+        function toggleTheme() {
+            document.body.classList.add('switching');
+            setTimeout(() => {
+                const currentTheme = document.body.getAttribute('data-theme') || 'dark';
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                document.body.setAttribute('data-theme', newTheme);
+                localStorage.setItem('preferred-theme', newTheme);
+                setTimeout(() => {
+                    document.body.classList.remove('switching');
+                }, 80);
+            }, 180);
+        }
+
+        // Выпадающие списки на мобилке
+        function toggleDropdown(event, type) {
+            event.stopPropagation();
+            const container = document.getElementById('dropdown-' + type + '-container');
+            const isOpen = container.classList.contains('show');
+            
+            closeAllDropdowns();
+            
+            if (!isOpen) {
+                container.classList.add('show');
+            }
+        }
+
+        function closeAllDropdowns() {
+            document.querySelectorAll('.m-dropdown').forEach(el => el.classList.remove('show'));
+        }
+
+        window.addEventListener('click', () => {
+            closeAllDropdowns();
+        });
+
+        // Отслеживание скролла для мобильного Telegram-бара
+        window.addEventListener('scroll', () => {
+            if (window.innerWidth <= 900) {
+                if (window.scrollY > 180) {
+                    document.body.classList.add('scrolled');
+                } else {
+                    document.body.classList.remove('scrolled');
+                    closeAllDropdowns();
+                }
+            } else {
+                document.body.classList.remove('scrolled');
+            }
+        });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferred-lang');
+            const savedMode = localStorage.getItem('preferred-mode');
+            const savedTheme = localStorage.getItem('preferred-theme') || 'dark';
+
+            document.body.setAttribute('data-theme', savedTheme);
+
+            if (savedMode) {
+                setMode(savedMode);
+            } else {
+                setMode('short');
+            }
+
+            if (savedLang) {
+                setLanguage(savedLang);
+            } else {
+                const userLangs = navigator.languages || [navigator.language];
+                const hasBe = userLangs.some(l => l.toLowerCase().startsWith('be'));
+                const hasRu = userLangs.some(l => l.toLowerCase().startsWith('ru'));
+                if (hasBe) {
+                    setLanguage('be');
+                } else if (hasRu) {
+                    setLanguage('ru');
+                } else {
+                    setLanguage('en');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
