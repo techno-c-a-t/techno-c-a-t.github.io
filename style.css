@@ -617,9 +617,11 @@ body[data-mode="short"] .sidebar {
         align-items: stretch !important; 
     }
     
+    body[data-mode="full"] .sidebar,
     .sidebar {
         width: 100%;
         position: static;
+        align-self: auto;
     }
     
     /* Мобильный баннер в 2 колонки */
